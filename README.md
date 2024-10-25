@@ -1,6 +1,6 @@
 # Needfull: Empowering Emotional Intelligence through Nonviolent Communication (NVC)
 
-Needfull is an innovative application designed to track and analyze emotions and needs based on the principles of Nonviolent Communication (NVC). In our fast-paced world, understanding the "why" behind our feelings often gets lost in the daily shuffle, making meaningful introspection challenging. Needful aims to quantify emotional needs in a simple and approachable way.
+Needfull is an innovative application designed to track and analyze emotions and needs based on the principles of Nonviolent Communication (NVC). Understanding the "why" behind our feelings often gets lost in the daily shuffle, making meaningful introspection challenging. Needful aims to quantify emotional needs in a simple and approachable way.
 
 ## What is Nonviolent Communication (NVC)?
 
