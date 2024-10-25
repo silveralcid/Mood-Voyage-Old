@@ -2,7 +2,6 @@ namespace Domain
 {
     public class Activity
     {
-
         public Guid Id { get; set; } // primary key for EF, need to be specifically Id
         public string Title { get; set; }
         public DateTime Date { get; set; }
