@@ -1,3 +1,7 @@
+# ignore app settings
+
+appsettings.json
+
 # Ignoring React
 
 # dependencies
