@@ -3,12 +3,12 @@ import './App.css'
 import axios from 'axios';
 
 function App() {
-  const [activities, setActivities] = useState([]);
+  const [needs, setNeeds] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/activities')
+    axios.get('http://localhost:5000/api/needs')
       .then(response => {
-        setActivities(response.data)
+        setNeeds(response.data)
       })
   }, [])
 
@@ -16,9 +16,9 @@ function App() {
     <div>
       <h1>Needfull</h1>
       <ul>
-        {activities.map((activity: any) => (
-          <li key={activity.id}>
-            {activity.title}
+        {needs.map((need: any) => (
+          <li key={need.id}>
+            {need.name}
           </li>
         ))}
       </ul>

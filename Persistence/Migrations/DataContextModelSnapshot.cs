@@ -17,7 +17,7 @@ namespace Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
-            modelBuilder.Entity("Domain.Activity", b =>
+            modelBuilder.Entity("Domain.Need", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -26,24 +26,24 @@ namespace Persistence.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("City")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Examples")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Venue")
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
+
+                    b.Property<byte>("Rating")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Activities");
+                    b.ToTable("Needs");
                 });
 #pragma warning restore 612, 618
         }
