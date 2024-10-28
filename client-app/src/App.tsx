@@ -18,7 +18,7 @@ function App() {
       <ul>
         {needs.map((need: any) => (
           <li key={need.id}>
-            {need.name}
+            Name: {need.name} - Category: {need.category} - Rating: {need.rating} - Date: {need.date}
           </li>
         ))}
       </ul>
