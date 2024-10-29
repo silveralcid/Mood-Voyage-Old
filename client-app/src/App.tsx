@@ -1,6 +1,7 @@
 import './App.css';
 import AssessmentForm, { AssessmentData } from './components/AssessmentForm';
 import { createAssessment } from './services/assessmentService';
+import AssessmentTable from './components/AssessmentTable';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     <div>
       <h1>Needfull</h1>
       <AssessmentForm onSubmit={handleAssessmentSubmit} />
+      <AssessmentTable />
     </div>
   );
 }
