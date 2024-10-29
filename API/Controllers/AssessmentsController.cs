@@ -24,5 +24,19 @@ namespace API.Controllers
             return await _context.Assessments.FindAsync(id);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateAssessment(Assessment assessment)
+        {
+            assessment.Id = Guid.NewGuid();
+            assessment.Date = DateTime.UtcNow;
+
+            _context.Assessments.Add(assessment);
+            var result = await _context.SaveChangesAsync() > 0;
+
+            if (result) return CreatedAtAction(nameof(GetAssessment), new { id = assessment.Id }, assessment);
+
+            return BadRequest("Failed to create assessment");
+        }
+
     }
 }
