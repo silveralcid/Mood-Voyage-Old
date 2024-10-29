@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
 import AssessmentForm, { AssessmentData } from './components/AssessmentForm';
 import { createAssessment } from './services/assessmentService';
 
