@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export interface AssessmentData {
-    userId: string;
     LivelihoodAvgRating: number;
     ConnectionAvgRating: number;
     EsteemAvgRating: number;
@@ -17,7 +16,6 @@ interface AssessmentFormProps {
 
 const AssessmentForm: React.FC<AssessmentFormProps> = ({ onSubmit }) => {
     const [formData, setFormData] = useState<AssessmentData>({
-        userId: '', // You might want to set this dynamically based on the logged-in user
         LivelihoodAvgRating: 0,
         ConnectionAvgRating: 0,
         EsteemAvgRating: 0,
@@ -35,7 +33,6 @@ const AssessmentForm: React.FC<AssessmentFormProps> = ({ onSubmit }) => {
         e.preventDefault();
         onSubmit(formData);
         setFormData({
-            userId: '', // You might want to set this dynamically based on the logged-in user
             LivelihoodAvgRating: 0,
             ConnectionAvgRating: 0,
             EsteemAvgRating: 0,

@@ -28,7 +28,6 @@ namespace API.Controllers
         public async Task<IActionResult> CreateAssessment(Assessment assessment)
         {
             assessment.Id = Guid.NewGuid();
-            assessment.Date = DateTime.UtcNow;
 
             _context.Assessments.Add(assessment);
             var result = await _context.SaveChangesAsync() > 0;

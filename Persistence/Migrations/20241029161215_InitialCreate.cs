@@ -16,14 +16,12 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    UserId = table.Column<string>(type: "TEXT", nullable: true),
                     LivelihoodAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
                     ConnectionAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
                     EsteemAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
                     AutonomyAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
                     PurposeAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
-                    ActualizationAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    ActualizationAvgRating = table.Column<byte>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
