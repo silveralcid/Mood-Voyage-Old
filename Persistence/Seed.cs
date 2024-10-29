@@ -10,94 +10,46 @@ namespace Persistence
     {
         public static async Task SeedData(DataContext context)
         {
-            if (context.Needs.Any()) return;
+            if (context.Assessments.Any()) return;
 
-            var needs = new List<Need>
+            var assessments = new List<Assessment>
             {
-                new Need
+                new Assessment
                 {
-                    Name = "Sustenance",
-                    Category = "Livelihood",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 20,
+                    UserId = "user1",
+                    LivelihoodAvgRating = 55,
+                    ConnectionAvgRating = 37,
+                    EsteemAvgRating = 42,
+                    AutonomyAvgRating = 60,
+                    PurposeAvgRating = 75,
+                    ActualizationAvgRating = 80,
                     Date = DateTime.UtcNow.AddMonths(-2),
                 },
-                new Need
+                new Assessment
                 {
-                    Name = "Rest",
-                    Category = "Livelihood",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 50,
-                    Date = DateTime.UtcNow.AddMonths(-2),
+                    UserId = "user2",
+                    LivelihoodAvgRating = 80,
+                    ConnectionAvgRating = 65,
+                    EsteemAvgRating = 70,
+                    AutonomyAvgRating = 85,
+                    PurposeAvgRating = 90,
+                    ActualizationAvgRating = 95,
+                    Date = DateTime.UtcNow.AddMonths(-1),
                 },
-                new Need
+                new Assessment
                 {
-                    Name = "Shelter",
-                    Category = "Livelihood",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 95,
-                    Date = DateTime.UtcNow.AddMonths(-2),
-                },
-                new Need
-                {
-                    Name = "Acceptance",
-                    Category = "Connection",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 55,
-                    Date = DateTime.UtcNow.AddMonths(-2),
-                },
-                new Need
-                {
-                    Name = "Intimacy",
-                    Category = "Connection",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 14,
-                    Date = DateTime.UtcNow.AddMonths(-2),
-                },
-                new Need
-                {
-                    Name = "Love",
-                    Category = "Connection",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 42,
-                    Date = DateTime.UtcNow.AddMonths(-2),
-                },
-                new Need
-                {
-                    Name = "Competence",
-                    Category = "Esteem",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 42,
-                    Date = DateTime.UtcNow.AddMonths(-2),
-                },
-                new Need
-                {
-                    Name = "Growth",
-                    Category = "Esteem",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 72,
-                    Date = DateTime.UtcNow.AddMonths(-2),
-                },
-                new Need
-                {
-                    Name = "Respect",
-                    Category = "Esteem",
-                    Description = "Description of need",
-                    Examples = "Activity 2 months ago",
-                    Rating = 12,
-                    Date = DateTime.UtcNow.AddMonths(-2),
+                    UserId = "user3",
+                    LivelihoodAvgRating = 40,
+                    ConnectionAvgRating = 50,
+                    EsteemAvgRating = 60,
+                    AutonomyAvgRating = 70,
+                    PurposeAvgRating = 80,
+                    ActualizationAvgRating = 90,
+                    Date = DateTime.UtcNow.AddMonths(-3),
                 },
             };
 
-            await context.Needs.AddRangeAsync(needs);
+            await context.Assessments.AddRangeAsync(assessments);
             await context.SaveChangesAsync();
         }
     }

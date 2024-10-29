@@ -9,7 +9,7 @@ namespace Persistence
         {
         }
 
-        public DbSet<Need> Needs { get; set; }
+        public DbSet<Assessment> Assessments { get; set; }
 
     }
 }
