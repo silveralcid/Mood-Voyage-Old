@@ -45,23 +45,30 @@ const AssessmentForm: React.FC<AssessmentFormProps> = ({ onSubmit, onSubmitSucce
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {Object.keys(formData).map((key) => (
-                <div key={key}>
-                    <label htmlFor={key}>{key.replace(/([A-Z])/g, ' $1').trim()}:</label>
-                    <input
-                        type="number"
-                        id={key}
-                        name={key}
-                        value={formData[key as keyof AssessmentData]}
-                        onChange={handleChange}
-                        required
-                        min="0"
-                        max="100"
-                    />
-                </div>
-            ))}
-            <button type="submit">Submit</button>
+        <form className="flex flex-col items-center justify-center" onSubmit={handleSubmit}>
+        {Object.keys(formData).map((key) => (
+            <div key={key}>
+            <label htmlFor={key}>{key.replace(/([A-Z])/g, ' $1').trim()}:</label>
+            <input
+                type="number"
+                id={key}
+                name={key}
+                value={formData[key as keyof AssessmentData]}
+                onChange={handleChange}
+                required
+                min="0"
+                max="100"
+            />
+            </div>
+        ))}
+        <div className="flex space-x-4">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+            Submit
+            </button>
+            <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+            Undo
+            </button>
+        </div>
         </form>
     );
 }
