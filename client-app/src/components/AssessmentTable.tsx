@@ -11,12 +11,16 @@ interface Assessment {
   actualizationAvgRating: number;
 }
 
-const AssessmentTable = () => {
+interface AssessmentTableProps {
+  refresh: boolean;
+}
+
+const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh }) => {
   const [assessments, setAssessments] = useState<Assessment[]>([]);
 
   useEffect(() => {
     fetchAssessments();
-  }, []);
+  }, [refresh]);
 
   const fetchAssessments = async () => {
     try {
@@ -28,8 +32,8 @@ const AssessmentTable = () => {
   };
 
   return (
-    <div>
-      <h2>Assessments</h2>
+    <div className= "flex flex-col items-center justify-center">
+      <h2 className="text-2xl font-bold mb-4">Assessments</h2>
       <table>
         <thead>
           <tr>

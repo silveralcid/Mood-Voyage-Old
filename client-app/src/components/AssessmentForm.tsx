@@ -12,9 +12,10 @@ export interface AssessmentData {
 
 interface AssessmentFormProps {
     onSubmit: (data: AssessmentData) => void;
+    onSubmitSuccess: () => void;
 }
 
-const AssessmentForm: React.FC<AssessmentFormProps> = ({ onSubmit }) => {
+const AssessmentForm: React.FC<AssessmentFormProps> = ({ onSubmit, onSubmitSuccess }) => {
     const [formData, setFormData] = useState<AssessmentData>({
         LivelihoodAvgRating: 0,
         ConnectionAvgRating: 0,
@@ -29,9 +30,10 @@ const AssessmentForm: React.FC<AssessmentFormProps> = ({ onSubmit }) => {
         setFormData((prevData) => ({...prevData, [name]: parseInt(value, 10)}));
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(formData);
+        await onSubmit(formData);
+        onSubmitSuccess();
         setFormData({
             LivelihoodAvgRating: 0,
             ConnectionAvgRating: 0,
