@@ -17,9 +17,10 @@ interface Assessment {
 interface AssessmentTableProps {
   refresh: boolean;
   dateRange: DateRange | undefined;
+  onAveragesUpdate: (averages: { [key: string]: number }) => void; // Add this line
 }
 
-const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh, dateRange }) => {
+const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh, dateRange, onAveragesUpdate }) => {
   const [assessments, setAssessments] = useState<Assessment[]>([]);
   const [loading, setLoading] = useState(false);
   const [averages, setAverages] = useState<{ [key: string]: number }>({});    
@@ -57,6 +58,7 @@ const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh, dateRange })
       });
 
       setAverages(newAverages);
+      onAveragesUpdate(newAverages);
       } catch (error) {
       console.error('Error fetching assessments:', error);
       } finally {
@@ -93,23 +95,23 @@ const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh, dateRange })
             {assessments.map((assessment) => (
               <tr key={assessment.id} className="border-b hover:bg-gray-100">
                 <td className="px-4 py-2">{assessment.id}</td>
-                <td className="px-4 py-2">{assessment.livelihoodAvgRating.toFixed(2)}</td>
-                <td className="px-4 py-2">{assessment.connectionAvgRating.toFixed(2)}</td>
-                <td className="px-4 py-2">{assessment.esteemAvgRating.toFixed(2)}</td>
-                <td className="px-4 py-2">{assessment.autonomyAvgRating.toFixed(2)}</td>
-                <td className="px-4 py-2">{assessment.purposeAvgRating.toFixed(2)}</td>
-                <td className="px-4 py-2">{assessment.actualizationAvgRating.toFixed(2)}</td>
+                <td className="px-4 py-2">{Math.round(assessment.livelihoodAvgRating)}</td>
+                <td className="px-4 py-2">{Math.round(assessment.connectionAvgRating)}</td>
+                <td className="px-4 py-2">{Math.round(assessment.esteemAvgRating)}</td>
+                <td className="px-4 py-2">{Math.round(assessment.autonomyAvgRating)}</td>
+                <td className="px-4 py-2">{Math.round(assessment.purposeAvgRating)}</td>
+                <td className="px-4 py-2">{Math.round(assessment.actualizationAvgRating)}</td>
                 <td className="px-4 py-2">{format(parseISO(assessment.date), 'MMM dd, yyyy')}</td>
               </tr>
             ))}
             <tr className="bg-gray-100 font-bold">
               <td className="px-4 py-2">Averages</td>
-              <td className="px-4 py-2">{averages.livelihoodAvgRating?.toFixed(2)}</td>
-              <td className="px-4 py-2">{averages.connectionAvgRating?.toFixed(2)}</td>
-              <td className="px-4 py-2">{averages.esteemAvgRating?.toFixed(2)}</td>
-              <td className="px-4 py-2">{averages.autonomyAvgRating?.toFixed(2)}</td>
-              <td className="px-4 py-2">{averages.purposeAvgRating?.toFixed(2)}</td>
-              <td className="px-4 py-2">{averages.actualizationAvgRating?.toFixed(2)}</td>
+              <td className="px-4 py-2">{averages.livelihoodAvgRating ? Math.round(averages.livelihoodAvgRating) : '-'}</td>
+              <td className="px-4 py-2">{averages.connectionAvgRating ? Math.round(averages.connectionAvgRating) : '-'}</td>
+              <td className="px-4 py-2">{averages.esteemAvgRating ? Math.round(averages.esteemAvgRating) : '-'}</td>
+              <td className="px-4 py-2">{averages.autonomyAvgRating ? Math.round(averages.autonomyAvgRating) : '-'}</td>
+              <td className="px-4 py-2">{averages.purposeAvgRating ? Math.round(averages.purposeAvgRating) : '-'}</td>
+              <td className="px-4 py-2">{averages.actualizationAvgRating ? Math.round(averages.actualizationAvgRating) : '-'}</td>
               <td className="px-4 py-2">-</td>
             </tr>
           </tbody>

@@ -27,14 +27,9 @@ interface ChartData {
   fill: string;
 }
 
-const chartData: ChartData[] = [
-  { need: "actualization", rating: 60, fill: "var(--color-actualization)" },
-  { need: "purpose", rating: 90, fill: "var(--color-purpose)" },
-  { need: "autonomy", rating: 50, fill: "var(--color-autonomy)" },
-  { need: "esteem", rating: 30, fill: "var(--color-esteem)" },
-  { need: "connection", rating: 10, fill: "var(--color-connection)" },
-  { need: "livelihood", rating: 60, fill: "var(--color-livelihood)" },
-]
+interface RadialChartProps {
+  averages?: { [key: string]: number };
+}
 
 const chartConfig: ChartConfig = {
   rating: {
@@ -66,12 +61,21 @@ const chartConfig: ChartConfig = {
   },
 }
 
-const RadialChart: React.FC = () => {
+const RadialChart: React.FC<RadialChartProps> = ({ averages = {} }) => {
+  const chartData: ChartData[] = [
+    { need: "actualization", rating: Math.round(averages.actualizationAvgRating || 0), fill: "var(--color-actualization)" },
+    { need: "purpose", rating: Math.round(averages.purposeAvgRating || 0), fill: "var(--color-purpose)" },
+    { need: "autonomy", rating: Math.round(averages.autonomyAvgRating || 0), fill: "var(--color-autonomy)" },
+    { need: "esteem", rating: Math.round(averages.esteemAvgRating || 0), fill: "var(--color-esteem)" },
+    { need: "connection", rating: Math.round(averages.connectionAvgRating || 0), fill: "var(--color-connection)" },
+    { need: "livelihood", rating: Math.round(averages.livelihoodAvgRating || 0), fill: "var(--color-livelihood)" },
+  ];
+
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
         <CardTitle>Needs</CardTitle>
-        {/* <CardDescription>Date</CardDescription> */}
+        <CardDescription>Radial Chart</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -87,14 +91,11 @@ const RadialChart: React.FC = () => {
           </RadialBarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
+      {/* <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        {/* <div className="leading-none text-muted-foreground">
-          Showing data for today
-        </div> */}
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   )
 }

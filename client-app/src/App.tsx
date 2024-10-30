@@ -5,12 +5,20 @@ import { DateRange } from 'react-day-picker';
 import AssessmentForm, { AssessmentData } from './components/AssessmentForm';
 import { createAssessment } from './services/assessmentService';
 import AssessmentTable from './components/AssessmentTable';
-import RadialChart from './components/RadialChart';
+
 import DatePickerWithRange from './components/DatePickerWithRange';
+
+import LineChart from './components/LineChart';
+import RadialChart from './components/RadialChart';
+import RadarChart from './components/RadarChart';
+
+
+
 
 function App() {
   const [refresh, setRefresh] = useState(false);
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
+  const [averages, setAverages] = useState<{ [key: string]: number }>({});
 
   const handleAssessmentSubmit = async (data: AssessmentData) => {
     try {
@@ -29,14 +37,27 @@ function App() {
     setRefresh(!refresh);
   };
 
+  const handleAveragesUpdate = (newAverages: { [key: string]: number }) => {
+    setAverages(newAverages);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-8">
       <h1 className="text-2xl font-bold mb-4">Needfull</h1>
       {/* <AssessmentForm onSubmit={handleAssessmentSubmit} onSubmitSuccess={() => setRefresh(!refresh)} /> */}
       <DatePickerWithRange onDateRangeChange={handleDateRangeChange} />
 
-      <RadialChart />
-      <AssessmentTable refresh={refresh} dateRange={dateRange} />
+      <div className="flex flex-row">
+        <RadialChart averages={averages} />
+        <LineChart />
+        <RadarChart averages={averages} />
+      </div>
+
+      <AssessmentTable 
+        refresh={refresh} 
+        dateRange={dateRange} 
+        onAveragesUpdate={handleAveragesUpdate}
+      />
     </div>
   );
 }
