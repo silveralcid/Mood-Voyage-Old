@@ -1,21 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+
 namespace API.Controllers
 {
     public class AssessmentsController : BaseApiController
     {
         private readonly DataContext _context;
+
         public AssessmentsController(DataContext context)
         {
             _context = context;
         }
 
         [HttpGet] // /api/Assessments
-        public async Task<ActionResult<List<Assessment>>> GetAssessments()
+        public async Task<ActionResult<List<Assessment>>> GetAssessments([FromQuery] DateTime? from, [FromQuery] DateTime? to)
         {
-            return await _context.Assessments.ToListAsync();
+            var query = _context.Assessments.AsQueryable();
+
+            if (from.HasValue && to.HasValue)
+            {
+                query = query.Where(a => a.Date >= from.Value && a.Date <= to.Value);
+            }
+
+            return await query.ToListAsync();
         }
 
         [HttpGet("{id}")] // /api/Assessments/xyz
@@ -36,6 +49,5 @@ namespace API.Controllers
 
             return BadRequest("Failed to create assessment");
         }
-
     }
 }

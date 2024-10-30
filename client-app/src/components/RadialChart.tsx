@@ -3,7 +3,6 @@
 import React from 'react';
 import { TrendingUp } from "lucide-react"
 import { RadialBar, RadialBarChart } from "recharts"
-import DatePickerWithRange from './DatePickerWithRange';
 
 import {
   Card,
@@ -73,7 +72,6 @@ const RadialChart: React.FC = () => {
       <CardHeader className="items-center pb-0">
         <CardTitle>Needs</CardTitle>
         {/* <CardDescription>Date</CardDescription> */}
-        <DatePickerWithRange />
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer

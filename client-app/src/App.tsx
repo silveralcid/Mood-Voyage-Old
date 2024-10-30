@@ -1,15 +1,16 @@
 import './App.css';
 import { useState } from 'react';
+import { DateRange } from 'react-day-picker';
 
 import AssessmentForm, { AssessmentData } from './components/AssessmentForm';
 import { createAssessment } from './services/assessmentService';
 import AssessmentTable from './components/AssessmentTable';
-
 import RadialChart from './components/RadialChart';
+import DatePickerWithRange from './components/DatePickerWithRange';
 
 function App() {
-
   const [refresh, setRefresh] = useState(false);
+  const [dateRange, setDateRange] = useState<DateRange | undefined>();
 
   const handleAssessmentSubmit = async (data: AssessmentData) => {
     try {
@@ -23,12 +24,19 @@ function App() {
     }
   };
 
+  const handleDateRangeChange = (newDateRange: DateRange | undefined) => {
+    setDateRange(newDateRange);
+    setRefresh(!refresh);
+  };
+
   return (
-    <div className= "flex flex-col items-center justify-center min-h-screen py-8">
+    <div className="flex flex-col items-center justify-center min-h-screen py-8">
       <h1 className="text-2xl font-bold mb-4">Needfull</h1>
       {/* <AssessmentForm onSubmit={handleAssessmentSubmit} onSubmitSuccess={() => setRefresh(!refresh)} /> */}
+      <DatePickerWithRange onDateRangeChange={handleDateRangeChange} />
+
       <RadialChart />
-      <AssessmentTable refresh={refresh} />
+      <AssessmentTable refresh={refresh} dateRange={dateRange} />
     </div>
   );
 }
