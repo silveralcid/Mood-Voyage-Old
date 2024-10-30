@@ -11,7 +11,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241029161215_InitialCreate")]
+    [Migration("20241030143347_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,6 +34,9 @@ namespace Persistence.Migrations
 
                     b.Property<byte>("ConnectionAvgRating")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
 
                     b.Property<byte>("EsteemAvgRating")
                         .HasColumnType("INTEGER");

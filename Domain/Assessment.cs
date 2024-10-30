@@ -3,6 +3,7 @@ namespace Domain
     public class Assessment
     {
         public Guid Id { get; set; } // primary key for EF, need to be specifically Id
+        public DateTime Date { get; set; }
         public byte LivelihoodAvgRating { get; set; }
         public byte ConnectionAvgRating { get; set; }
         public byte EsteemAvgRating { get; set; }

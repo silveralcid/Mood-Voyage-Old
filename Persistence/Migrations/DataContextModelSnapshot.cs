@@ -32,6 +32,9 @@ namespace Persistence.Migrations
                     b.Property<byte>("ConnectionAvgRating")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
                     b.Property<byte>("EsteemAvgRating")
                         .HasColumnType("INTEGER");
 

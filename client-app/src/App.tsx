@@ -26,7 +26,7 @@ function App() {
   return (
     <div className= "flex flex-col items-center justify-center min-h-screen py-8">
       <h1 className="text-2xl font-bold mb-4">Needfull</h1>
-      <AssessmentForm onSubmit={handleAssessmentSubmit} onSubmitSuccess={() => setRefresh(!refresh)} />
+      {/* <AssessmentForm onSubmit={handleAssessmentSubmit} onSubmitSuccess={() => setRefresh(!refresh)} /> */}
       <RadialChart />
       <AssessmentTable refresh={refresh} />
     </div>

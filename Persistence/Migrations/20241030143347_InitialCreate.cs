@@ -16,6 +16,7 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     LivelihoodAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
                     ConnectionAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),
                     EsteemAvgRating = table.Column<byte>(type: "INTEGER", nullable: false),

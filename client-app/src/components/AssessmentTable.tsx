@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface Assessment {
+  date: string;
   id: string;
   livelihoodAvgRating: number;
   connectionAvgRating: number;
@@ -44,6 +45,7 @@ const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh }) => {
             <th>Autonomy</th>
             <th>Purpose</th>
             <th>Actualization</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +58,7 @@ const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh }) => {
               <td>{assessment.autonomyAvgRating}</td>
               <td>{assessment.purposeAvgRating}</td>
               <td>{assessment.actualizationAvgRating}</td>
+              <td>{assessment.date}</td>
             </tr>
           ))}
         </tbody>
