@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { CartesianGrid, Line, LineChart as RechartsLineChart, XAxis } from "recharts"
-
 import {
   Card,
   CardContent,
@@ -17,62 +16,99 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-interface ChartDataPoint {
+interface Assessment {
   date: string
-  desktop: number
-  mobile: number
+  id: string
+  livelihoodAvgRating: number
+  connectionAvgRating: number
+  esteemAvgRating: number
+  autonomyAvgRating: number
+  purposeAvgRating: number
+  actualizationAvgRating: number
 }
 
-const chartData: ChartDataPoint[] = [
-  { date: "2024-04-01", desktop: 222, mobile: 150 },
-  { date: "2024-04-02", desktop: 97, mobile: 180 },
-  { date: "2024-04-03", desktop: 167, mobile: 120 },
-  // ... rest of the data points from the original file
-  { date: "2024-06-30", desktop: 446, mobile: 400 },
-]
+interface ChartDataPoint {
+  date: string
+  livelihood: number
+  connection: number
+  esteem: number
+  autonomy: number
+  purpose: number
+  actualization: number
+}
+
+interface Averages {
+  livelihoodAvgRating: number
+  connectionAvgRating: number
+  esteemAvgRating: number
+  autonomyAvgRating: number
+  purposeAvgRating: number
+  actualizationAvgRating: number
+}
 
 const chartConfig = {
-  views: {
-    label: "Page Views",
-  },
-  desktop: {
-    label: "Desktop",
+  livelihood: {
+    label: "Livelihood",
     color: "hsl(var(--chart-1))",
   },
-  mobile: {
-    label: "Mobile",
+  connection: {
+    label: "Connection",
     color: "hsl(var(--chart-2))",
+  },
+  esteem: {
+    label: "Esteem",
+    color: "hsl(var(--chart-3))",
+  },
+  autonomy: {
+    label: "Autonomy",
+    color: "hsl(var(--chart-4))",
+  },
+  purpose: {
+    label: "Purpose",
+    color: "hsl(var(--chart-5))",
+  },
+  actualization: {
+    label: "Actualization",
+    color: "hsl(var(--chart-6))",
   },
 } satisfies ChartConfig
 
 interface LineChartProps {
   className?: string
+  assessments: Assessment[]
+  averages: Averages
 }
 
-const LineChart: React.FC<LineChartProps> = ({ className }) => {
+const LineChart: React.FC<LineChartProps> = ({ className, assessments, averages }) => {
   const [activeChart, setActiveChart] = 
-    React.useState<keyof typeof chartConfig>("desktop")
+    React.useState<keyof typeof chartConfig>("livelihood")
 
-  const total = React.useMemo(
-    () => ({
-      desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
-      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0),
-    }),
-    []
-  )
+ // Transform and sort assessments data
+ const chartData: ChartDataPoint[] = assessments
+ .map(assessment => ({
+   date: assessment.date,
+   livelihood: Math.round(assessment.livelihoodAvgRating),
+   connection: Math.round(assessment.connectionAvgRating),
+   esteem: Math.round(assessment.esteemAvgRating),
+   autonomy: Math.round(assessment.autonomyAvgRating),
+   purpose: Math.round(assessment.purposeAvgRating),
+   actualization: Math.round(assessment.actualizationAvgRating),
+ }))
+ .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+
+  // Round the averages for display
+  const roundedAverages = Object.keys(averages).reduce((acc, key) => {
+    acc[key as keyof typeof averages] = Math.round(averages[key as keyof typeof averages]);
+    return acc;
+  }, {} as Averages)[1];
 
   return (
     <Card className={className}>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
-        <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Line Chart - Interactive</CardTitle>
-          <CardDescription>
-            Showing total visitors for the last 3 months
-          </CardDescription>
-        </div>
-        <div className="flex">
-          {["desktop", "mobile"].map((key) => {
+        <div className="flex flex-wrap">
+          {Object.keys(chartConfig).map((key) => {
             const chart = key as keyof typeof chartConfig
+            const avgKey = `${key}AvgRating` as keyof typeof averages
             return (
               <button
                 key={chart}
@@ -84,7 +120,7 @@ const LineChart: React.FC<LineChartProps> = ({ className }) => {
                   {chartConfig[chart].label}
                 </span>
                 <span className="text-lg font-bold leading-none sm:text-3xl">
-                  {total[key as keyof typeof total].toLocaleString()}
+                  {averages[avgKey] ? Math.round(averages[avgKey]) : '-'}
                 </span>
               </button>
             )
@@ -122,7 +158,7 @@ const LineChart: React.FC<LineChartProps> = ({ className }) => {
               content={
                 <ChartTooltipContent
                   className="w-[150px]"
-                  nameKey="views"
+                  nameKey={activeChart}
                   labelFormatter={(value: string) => {
                     return new Date(value).toLocaleDateString("en-US", {
                       month: "short",
@@ -136,7 +172,7 @@ const LineChart: React.FC<LineChartProps> = ({ className }) => {
             <Line
               dataKey={activeChart}
               type="monotone"
-              stroke={`var(--color-${activeChart})`}
+              stroke={chartConfig[activeChart].color}
               strokeWidth={2}
               dot={false}
             />

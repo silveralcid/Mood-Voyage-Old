@@ -17,14 +17,13 @@ interface Assessment {
 interface AssessmentTableProps {
   refresh: boolean;
   dateRange: DateRange | undefined;
-  onAveragesUpdate: (averages: { [key: string]: number }) => void; // Add this line
+  onAveragesUpdate: (averages: { [key: string]: number }, assessments: Assessment[]) => void;
 }
 
 const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh, dateRange, onAveragesUpdate }) => {
   const [assessments, setAssessments] = useState<Assessment[]>([]);
   const [loading, setLoading] = useState(false);
   const [averages, setAverages] = useState<{ [key: string]: number }>({});    
-  
 
   useEffect(() => {
     fetchAssessments();
@@ -41,6 +40,7 @@ const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh, dateRange, o
       }
       const response = await axios.get<Assessment[]>(url);
       setAssessments(response.data);
+      
       // Calculate averages
       const newAverages: { [key: string]: number } = {};
       const fields = [
@@ -53,18 +53,18 @@ const AssessmentTable: React.FC<AssessmentTableProps> = ({ refresh, dateRange, o
       ];
 
       fields.forEach((field) => {
-        const sum = response.data.reduce((acc, assessment) => acc + assessment[field], 0); //why
+        const sum = response.data.reduce((acc, assessment) => acc + assessment[field], 0);
         newAverages[field] = sum / response.data.length;
       });
 
       setAverages(newAverages);
-      onAveragesUpdate(newAverages);
-      } catch (error) {
+      onAveragesUpdate(newAverages, response.data); // Pass both averages and assessments
+    } catch (error) {
       console.error('Error fetching assessments:', error);
-      } finally {
+    } finally {
       setLoading(false);
-      }
-      };
+    }
+  };
 
   if (loading) {
     return <div className="text-center">Loading...</div>;
