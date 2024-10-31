@@ -9,6 +9,7 @@ import DatePickerWithRange from './components/DatePickerWithRange';
 import LineChart from './components/LineChart';
 import RadialChart from './components/RadialChart';
 import RadarChart from './components/RadarChart';
+import { ResponsiveContainer } from 'recharts';
 
 interface Assessment {
   date: string;
@@ -51,16 +52,19 @@ function App() {
     <div className="flex flex-col items-center justify-center min-h-screen py-8">
       <h1 className="text-2xl font-bold mb-4">Needfull</h1>
       <DatePickerWithRange onDateRangeChange={handleDateRangeChange} />
-
-      <div className="flex flex-row">
-        <RadialChart averages={averages} />
-        <LineChart 
-          assessments={assessments}
-          averages={averages}
-        />
-        <RadarChart averages={averages} />
+      <LineChart assessments={assessments} averages={averages} />
+          <div className='flex gap-4'>
+      <div className="min-w-[300px] w-full">
+        <ResponsiveContainer width="100%" minHeight={300} aspect={1}>
+          <RadialChart averages={averages} />
+        </ResponsiveContainer>
       </div>
-
+      <div className="min-w-[300px] w-full">
+        <ResponsiveContainer width="100%" minHeight={300} aspect={1}>
+          <RadarChart averages={averages} />
+        </ResponsiveContainer>
+      </div>
+    </div>
       <AssessmentTable 
         refresh={refresh} 
         dateRange={dateRange} 
