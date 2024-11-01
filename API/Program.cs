@@ -1,4 +1,5 @@
 using Application.Assessments;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -23,7 +24,7 @@ builder.Services.AddCors(opt =>
     });
 });
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(List.Handler).Assembly));
+builder.Services.AddMediatR(typeof(List.Handler).Assembly);
 
 var app = builder.Build();
 
