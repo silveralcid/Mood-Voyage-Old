@@ -25,6 +25,12 @@ namespace Application.Assessments
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
+                var assessment = await _context.Assessments.FindAsync(request.Assessment.Id);
+
+                assessment.LivelihoodAvgRating = request.Assessment.LivelihoodAvgRating;
+
+                await _context.SaveChangesAsync();
+
                 return await Unit.Task;
             }
         }

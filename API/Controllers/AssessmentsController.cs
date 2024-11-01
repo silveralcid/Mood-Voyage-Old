@@ -31,5 +31,14 @@ namespace API.Controllers
         {
             return Ok(await Mediator.Send(new Create.Command { Assessment = assessment }));
         }
+
+        [HttpPut("{id}")]
+
+        public async Task<IActionResult> EditAssessment(Guid id, Assessment assessment)
+        {
+            assessment.Id = id;
+            return Ok(await Mediator.Send(new Edit.Command { Assessment = assessment }));
+        }
+
     }
 }
