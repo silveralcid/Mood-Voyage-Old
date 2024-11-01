@@ -1,14 +1,14 @@
-import './App.css';
+import './styles.css';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 
-import AssessmentForm, { AssessmentData } from './components/AssessmentForm';
-import { createAssessment } from './services/assessmentService';
-import AssessmentTable from './components/AssessmentTable';
-import DatePickerWithRange from './components/DatePickerWithRange';
-import LineChart from './components/LineChart';
-import RadialChart from './components/RadialChart';
-import RadarChart from './components/RadarChart';
+import AssessmentForm, { AssessmentData } from '../../components/AssessmentForm';
+import { createAssessment } from '../../services/assessmentService';
+import AssessmentTable from '../../components/AssessmentTable';
+import DatePickerWithRange from '../../components/DatePickerWithRange';
+import LineChart from '../../components/charts/LineChart';
+import RadialChart from '../../components/charts/RadialChart';
+import RadarChart from '../../components/charts/RadarChart';
 import { ResponsiveContainer } from 'recharts';
 
 interface Assessment {
