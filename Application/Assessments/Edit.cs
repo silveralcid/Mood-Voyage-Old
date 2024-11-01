@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Domain;
 using MediatR;
 using Persistence;
@@ -18,8 +15,10 @@ namespace Application.Assessments
         public class Handler : IRequestHandler<Command>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
@@ -27,8 +26,7 @@ namespace Application.Assessments
             {
                 var assessment = await _context.Assessments.FindAsync(request.Assessment.Id);
 
-                assessment.LivelihoodAvgRating = request.Assessment.LivelihoodAvgRating;
-
+                _mapper.Map(request.Assessment, assessment);
                 await _context.SaveChangesAsync();
 
                 return await Unit.Task;
