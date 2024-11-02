@@ -1,6 +1,8 @@
+import './index.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Assessment } from '../models/assessment';
+import { Assessment } from './app/models/assessment';
+
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
   }, []);
 
   return (
+    
     <div>
       <h1>Assessments</h1>
       <ul>
