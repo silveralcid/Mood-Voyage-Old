@@ -115,9 +115,14 @@ const DashboardTable: React.FC<DashboardTableProps> = ({ refresh, dateRange, onA
           </TableBody>
         </Table>
       </div>
-      <Button className="mt-4" onClick={() => console.log("More button clicked")}>
-        More
-      </Button>
+      <div className='flex-row'>
+        <Button className="mt-4">
+          Back
+        </Button>
+        <Button className="mt-4">
+          Next
+        </Button>
+      </div>
     </div>
   );
 };

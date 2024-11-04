@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingUp } from "lucide-react";
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart as RechartsRadarChart } from "recharts";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart as RechartsRadarChart, ResponsiveContainer } from "recharts";
 import {
   Card,
   CardContent,
@@ -60,19 +60,16 @@ export const DashboardToggleChart: React.FC<DashboardToggleChartProps> = ({
   ];
 
   return (
-    <div className={className}>
-      <Card className="h-full">
-        <CardHeader className="items-center pb-4">
-          <CardTitle>Needs </CardTitle>
-          <CardDescription>
-            Radar Chart
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="h-[calc(100%-theme(spacing.24))] pb-0">
-          <ChartContainer
-            config={chartConfig}
-            className="h-full w-full"
-          >
+    <div className={`h-full flex flex-col ${className}`}>
+      <div className="flex items-center justify-between mb-2">
+        <div>
+          <h3 className="text-lg font-semibold">Needs</h3>
+          <p className="text-sm text-muted-foreground">Radar Chart</p>
+        </div>
+      </div>
+      <div className="flex-1 min-h-0">
+        <ChartContainer config={chartConfig} className="h-full w-full">
+          <ResponsiveContainer width="100%" height="100%">
             <RechartsRadarChart data={chartData}>
               <ChartTooltip 
                 cursor={false} 
@@ -88,16 +85,14 @@ export const DashboardToggleChart: React.FC<DashboardToggleChartProps> = ({
                 stroke="var(--color-chart-1)"
               />
             </RechartsRadarChart>
-          </ChartContainer>
-        </CardContent>
-        <CardFooter className="flex-col gap-2 text-sm">
-          <div className="flex items-center gap-2 font-medium leading-none">
-            Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-          </div>
-        </CardFooter>
-      </Card>
+          </ResponsiveContainer>
+        </ChartContainer>
+      </div>
+      <div className="mt-2 flex items-center gap-2 text-sm font-medium">
+        Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+      </div>
     </div>
-  );
+  )
 };
 
 export default DashboardToggleChart;

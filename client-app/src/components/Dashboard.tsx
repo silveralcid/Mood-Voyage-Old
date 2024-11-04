@@ -57,27 +57,27 @@ const Dashboard: React.FC = () => {
       </div>
   
       <div className="flex flex-1 flex-col overflow-hidden">
-        <div className="flex mb-4 flex-1">
+        <div className="flex mb-4 h-[300px]">
           <Card className="w-2/3 mr-4">
-            <CardContent className="h-full">
-              <DashboardLineChart assessments={assessments} averages={averages} />
+            <CardContent className="h-full p-4">
+              <DashboardLineChart assessments={assessments} averages={averages} className="h-full" />
             </CardContent>
           </Card>
-          <Card className="w-1/3 h-full">
-            <CardContent className="h-full flex flex-col">
-              <DashboardToggleChart className="flex-1" averages={averages} />
+          <Card className="w-1/3">
+            <CardContent className="h-full p-4">
+              <DashboardToggleChart className="h-full" averages={averages} />
             </CardContent>
           </Card>
         </div>
   
         <div className="flex flex-1">
           <div className="w-1/3 mr-4 flex flex-col">
-            <Card className="flex-1 mb-2">
+            <Card className="flex-1 mb-4">
               <CardContent className="h-full flex items-center justify-center text-gray-500">
                 Placeholder Card 1A
               </CardContent>
             </Card>
-            <Card className="flex-1 mt-2">
+            <Card className="flex-1">
               <CardContent className="h-full flex items-center justify-center text-gray-500">
                 Placeholder Card 1B
               </CardContent>
@@ -95,7 +95,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default Dashboard;
