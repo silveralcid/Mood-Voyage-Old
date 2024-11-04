@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import DashboardTable from './DashboardTable';
 import DashboardLineChart from './DashboardLineChart';
 import DashboardToggleChart from './DashboardToggleChart';
+import DatePickerWithRange from './DatePickerWithRange';
 import { RefreshCw } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
@@ -51,11 +52,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <Button onClick={handleRefresh} className="flex items-center">
-          <RefreshCw className="mr-2 h-4 w-4" /> Refresh
-        </Button>
+      <div className="flex justify-center items-center mb-4">
+        <DatePickerWithRange onDateRangeChange={setDateRange} />
       </div>
   
       <div className="flex flex-1 flex-col overflow-hidden">
