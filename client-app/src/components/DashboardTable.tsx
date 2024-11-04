@@ -86,24 +86,24 @@ const DashboardTable: React.FC<DashboardTableProps> = ({ refresh, dateRange, onA
   const recentAssessments = assessments.slice(0, 5);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="w-full">
+    <div className="h-full flex flex-col">
+      <div className="flex-1 overflow-auto">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Date</TableHead>
-              <TableHead>Livelihood</TableHead>
-              <TableHead>Connection</TableHead>
-              <TableHead>Esteem</TableHead>
-              <TableHead>Autonomy</TableHead>
-              <TableHead>Purpose</TableHead>
-              <TableHead>Actualization</TableHead>
+              <TableHead className="whitespace-nowrap">Date</TableHead>
+              <TableHead className="whitespace-nowrap">Livelihood</TableHead>
+              <TableHead className="whitespace-nowrap">Connection</TableHead>
+              <TableHead className="whitespace-nowrap">Esteem</TableHead>
+              <TableHead className="whitespace-nowrap">Autonomy</TableHead>
+              <TableHead className="whitespace-nowrap">Purpose</TableHead>
+              <TableHead className="whitespace-nowrap">Actualization</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {recentAssessments.map((assessment) => (
               <TableRow key={assessment.date}>
-                <TableCell>{format(parseISO(assessment.date), 'MMM dd, yyyy')}</TableCell>
+                <TableCell className="whitespace-nowrap">{format(parseISO(assessment.date), 'MMM dd, yyyy')}</TableCell>
                 <TableCell>{assessment.livelihoodAvgRating}</TableCell>
                 <TableCell>{assessment.connectionAvgRating}</TableCell>
                 <TableCell>{assessment.esteemAvgRating}</TableCell>
@@ -115,16 +115,16 @@ const DashboardTable: React.FC<DashboardTableProps> = ({ refresh, dateRange, onA
           </TableBody>
         </Table>
       </div>
-      <div className='flex-row'>
-        <Button className="mt-4">
+      <div className="flex justify-between mt-4">
+        <Button>
           Back
         </Button>
-        <Button className="mt-4">
+        <Button>
           Next
         </Button>
       </div>
     </div>
-  );
+  )
 };
 
 export default DashboardTable;
