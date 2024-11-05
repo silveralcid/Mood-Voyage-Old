@@ -35,46 +35,28 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
+      title: "Overview",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Models",
+      title: "Assessments",
       url: "#",
       icon: Bot,
       items: [
         {
-          title: "Genesis",
+          title: "New Assessment",
           url: "#",
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
+          title: "Manage Assessments",
           url: "#",
         },
       ],
     },
     {
-      title: "Documentation",
+      title: "Learning",
       url: "#",
       icon: BookOpen,
       items: [
@@ -163,8 +145,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Command className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-semibold">Mood Voyage</span>
+                  <span className="truncate text-xs">NVC-based Needs Tracking</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -173,7 +155,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        {/* <NavProjects projects={data.projects} /> */}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

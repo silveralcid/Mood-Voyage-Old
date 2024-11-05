@@ -28,7 +28,7 @@ interface Averages {
   actualizationAvgRating: number;
 }
 
-const Dashboard: React.FC = () => {
+const IndividualAssessment: React.FC = () => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
   const [refresh, setRefresh] = useState(false);
   const [assessments, setAssessments] = useState<Assessment[]>([]);
@@ -74,12 +74,12 @@ const Dashboard: React.FC = () => {
           <div className="w-1/3 mr-4 flex flex-col">
             <Card className="flex-1 mb-4">
               <CardContent className="h-full flex items-center justify-center text-gray-500">
-                Overview Dashboard
+                Individual Assessment
               </CardContent>
             </Card>
             <Card className="flex-1">
               <CardContent className="h-full flex items-center justify-center text-gray-500">
-              Overview Dashboard
+              Individual Assessment
               </CardContent>
             </Card>
           </div>
@@ -98,4 +98,4 @@ const Dashboard: React.FC = () => {
   )
 };
 
-export default Dashboard;
+export default IndividualAssessment;
