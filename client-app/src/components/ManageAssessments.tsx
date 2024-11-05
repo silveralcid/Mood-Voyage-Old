@@ -28,7 +28,7 @@ interface Averages {
   actualizationAvgRating: number;
 }
 
-const IndividualAssessment: React.FC = () => {
+const ManageAssessments: React.FC = () => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
   const [refresh, setRefresh] = useState(false);
   const [assessments, setAssessments] = useState<Assessment[]>([]);
@@ -98,4 +98,4 @@ const IndividualAssessment: React.FC = () => {
   )
 };
 
-export default IndividualAssessment;
+export default ManageAssessments;
