@@ -52,12 +52,12 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      <div className="flex justify-center items-center p-4">
+      <div className="flex justify-center items-center">
         <DatePickerWithRange onDateRangeChange={setDateRange} />
       </div>
-  
+    
       <div className="flex-1 flex flex-col overflow-hidden p-4">
-        <div className="flex mb-4 h-1/3">
+        <div className="h-1/2 flex mb-4">
           <Card className="w-2/3 mr-4">
             <CardContent className="h-full p-4">
               <DashboardLineChart assessments={assessments} averages={averages} className="h-full" />
@@ -69,8 +69,8 @@ const Dashboard: React.FC = () => {
             </CardContent>
           </Card>
         </div>
-  
-        <div className="flex flex-1">
+    
+        <div className="h-1/2 flex">
           <div className="w-1/3 mr-4 flex flex-col">
             <Card className="flex-1 mb-4">
               <CardContent className="h-full flex items-center justify-center text-gray-500">
