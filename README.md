@@ -1,6 +1,6 @@
-# Needfull: Empowering Emotional Intelligence through Nonviolent Communication (NVC)
+# Mood Voyage: Empowering Emotional Intelligence through Nonviolent Communication (NVC)
 
-Needfull is an innovative application designed to track and analyze emotions and needs based on the principles of Nonviolent Communication (NVC). Understanding the "why" behind our feelings often gets lost in the daily shuffle, making meaningful introspection challenging. Needful aims to quantify emotional needs in a simple and approachable way.
+Mood Voyage is an innovative application designed to track and analyze emotions and needs based on the principles of Nonviolent Communication (NVC). Understanding the "why" behind our feelings often gets lost in the daily shuffle, making meaningful introspection challenging. Needful aims to quantify emotional needs in a simple and approachable way.
 
 ## What is Nonviolent Communication (NVC)?
 
@@ -20,7 +20,7 @@ Research has shown that NVC can:
 - Reduce stress and increase well-being (Wacker & Dziobek, 2018)
 - Enhance relationship satisfaction and conflict resolution skills (Nosek et al., 2014)
 
-## Key Features of Needfull:
+## Key Features of Mood Voyage:
 
 - **Emotion Tracking**: Easily log and categorize your emotions throughout the day.
 - **Needs Identification**: Connect your emotions to underlying needs using NVC principles.
@@ -29,16 +29,16 @@ Research has shown that NVC can:
 - **Guided Journaling**: Deepen your understanding with thought-provoking prompts based on your tracked data.
 - **Privacy-Focused**: Your emotional data stays secure and private on your device.
 
-Needfull simplifies the complex world of emotions, making them more quantifiable and actionable without being overwhelming. By providing a structured approach to emotional awareness based on NVC principles, Needfull empowers users to:
+Mood Voyage simplifies the complex world of emotions, making them more quantifiable and actionable without being overwhelming. By providing a structured approach to emotional awareness based on NVC principles, Mood Voyage empowers users to:
 
 1. Gain clarity on their emotional states
 2. Identify patterns in their emotional responses
 3. Recognize unfulfilled needs driving their emotions
 4. Take informed actions to improve their overall well-being
 
-Whether you're new to emotional intelligence or a seasoned practitioner of NVC, Needfull offers a user-friendly platform to enhance self-awareness, foster personal growth, and cultivate more fulfilling relationships. By focusing on expressing and understanding needs, Needfull helps create a more compassionate and collaborative approach to self-reflection and communication.
+Whether you're new to emotional intelligence or a seasoned practitioner of NVC, Mood Voyage offers a user-friendly platform to enhance self-awareness, foster personal growth, and cultivate more fulfilling relationships. By focusing on expressing and understanding needs, Mood Voyage helps create a more compassionate and collaborative approach to self-reflection and communication.
 
-Start your journey to emotional clarity and need fulfillment with Needfull today!
+Start your journey to emotional clarity and need fulfillment with Mood Voyage today!
 
 References:
 - Marlow, E., et al. (2012). Nonviolent communication training and empathy in male parolees. Journal of Correctional Health Care, 18(1), 8-19.
