@@ -1,6 +1,6 @@
 # Mood Voyage: Empowering Emotional Intelligence through Nonviolent Communication (NVC)
 
-Mood Voyage is an innovative application designed to track and analyze emotions and needs based on the principles of Nonviolent Communication (NVC). Understanding the "why" behind our feelings often gets lost in the daily shuffle, making meaningful introspection challenging. Mood Voyage aims to quantify emotional needs in a simple and approachable way.
+Understanding the "why" behind our feelings often gets lost in the daily shuffle, making meaningful introspection challenging. Mood Voyage aims to quantify emotional needs in an elegant and approachable way through scientifically backed principles of Nonviolent Communication (NVC). 
 
 ## What is Nonviolent Communication (NVC)?
 
