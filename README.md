@@ -38,8 +38,6 @@ Mood Voyage simplifies the complex world of emotions, making them more quantifia
 
 Whether you're new to emotional intelligence or a seasoned practitioner of NVC, Mood Voyage offers a user-friendly platform to enhance self-awareness, foster personal growth, and cultivate more fulfilling relationships. By focusing on expressing and understanding needs, Mood Voyage helps create a more compassionate and collaborative approach to self-reflection and communication.
 
-Start your journey to emotional clarity and need fulfillment with Mood Voyage today!
-
 References:
 - Marlow, E., et al. (2012). Nonviolent communication training and empathy in male parolees. Journal of Correctional Health Care, 18(1), 8-19.
 - Nosek, M., et al. (2014). Nonviolent communication training increases empathy in baccalaureate nursing students: A mixed method study. Journal of Nursing Education and Practice, 4(10), 1-15.
